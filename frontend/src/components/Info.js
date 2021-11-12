@@ -32,6 +32,7 @@ function Info() {
       </Grid>
       <Grid item xs={12} align="center">
         <IconButton
+          style={{ color: "white" }}
           onClick={() => {
             page === pages.JOIN ? setPage(pages.CREATE) : setPage(pages.JOIN);
           }}

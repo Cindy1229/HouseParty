@@ -43,7 +43,7 @@ export class RoomJoin extends Component {
   render() {
     return (
       <div className="center-wrapper">
-        <Grid container spacing={1} align="center">
+        <Grid container spacing={2} align="center">
           <Grid item xs={12}>
             <Typography component="h4" variant="h4">
               Join a room
