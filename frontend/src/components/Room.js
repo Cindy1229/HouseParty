@@ -63,8 +63,8 @@ export class Room extends Component {
   getCurrentSong() {
     fetch("/spotify/current-song")
       .then((res) => {
-        // console.log(res);
-        if (!res.ok) {
+        console.log(res);
+        if (!res.ok || res.status === 204) {
           return {};
         }
         return res.json();
@@ -173,9 +173,18 @@ export class Room extends Component {
             Code: {this.roomCode}
           </Typography>
         </Grid>
-        <Grid item container xs={12} direction="row" justifyContent="center">
-          <MusicPlayer {...this.state.song} />
-        </Grid>
+        {JSON.stringify(this.state.song) === "{}" ? (
+          <Grid item xs={12}>
+            <Typography variant="h6" component="h6">
+              This room don't have a currently playing song...
+            </Typography>
+          </Grid>
+        ) : (
+          <Grid item container xs={12} direction="row" justifyContent="center">
+            <MusicPlayer {...this.state.song} />
+          </Grid>
+        )}
+
         <Grid item xs={12}>
           <Button
             variant="contained"
